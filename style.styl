@@ -1,15 +1,15 @@
-body
-  background: white
-  background-color: #f9eed8
-  color: #b2a97c
-  font-family: 'Dancing Script', cursive
-  text-shadow: 4px 4px 3px rgba(0, 0, 0, 0.1)
-  text-align: center
-  padding: 2em
-  font-size: 200%
+page_width = 40em
+text_color = #925B53 //#b2a97c
+header_color = #f9eed8
+bg_color = #f9eed8
+page_bg = #F9F3E5 //#DDCDBD //#fdfdfe
+page_color = #864B43 //#925249
+border = 1px solid #e5dbc7
+anchor_offset = 320px
 
-h2
-  margin: 1em
+body
+  background-color: #fbfbfc
+  overflow-y: scroll
 
 a, a:visited
   color: #925b53
@@ -17,3 +17,141 @@ a, a:visited
 a:hover
   text-decoration: none
 
+img
+  vertical-align: middle
+
+#background
+  position: fixed
+  top: -50%
+  left: -50%
+  width: 200%
+  height: 200%
+  background: #000
+
+  img
+    position: absolute
+    top: 0
+    left: 0
+    right: 0
+    bottom: 0
+    margin: auto
+    min-width: 50%
+    min-height: 50%
+    opacity: 0.8
+
+#content
+  color: text_color
+  text-align: center
+  max-width: page_width
+  margin: 4em auto
+  position: relative
+  border: border
+  border-radius: 3px
+
+#header
+  background-color: header_color
+  padding-bottom: 5px
+  border-bottom: border
+
+  > a > img
+    margin: 1em
+    width: 400px
+
+  .social
+    position: absolute
+    right: 0
+
+    a
+      margin: 5px
+      display: inline-block
+      color: white
+      background-color: #b2a97c
+
+      font-size: 26px
+      border-radius: 12px
+      width: 32px
+      height: 32px
+      padding: 2px
+
+      &:hover.facebook
+        background-color: #49659f
+
+      &:hover.instagram
+        background-color: #4e7ca0
+
+      &:hover.email
+        background-color: #fbd7c8
+
+#menu
+  font-size: 110%
+
+  ul
+    margin: 0
+    padding: 0
+
+  li
+    list-style: none
+    display: inline-block
+    margin: 0 0.25em
+    text-transform: uppercase
+
+    &:before
+      content: ' | '
+
+    &:first-of-type:before
+      content: none
+
+#pages
+  background-color: page_bg
+
+  h1, h2, h3
+    font-weight: normal
+    font-family: 'Dancing Script', cursive
+
+  > div
+    padding: 0.25em 1em 1em 1em
+    min-height: 300px
+    text-align: left
+    color: page_color
+
+  #home
+    font-size: 250%
+    font-family: 'Dancing Script', cursive
+    text-align: center
+    min-height: 0px
+    height: 1.3em !important
+
+    p
+      margin: 0.5em
+
+
+#instafeed
+  text-align: center
+
+  a
+    display: inline-block
+    border: 1px solid transparent
+    margin: 1px
+    margin-right: -1px
+    margin-bottom: -5px
+    border-radius: 5px
+    height: 150px !important
+    overflow: hidden
+
+    &:hover
+      border: 1px solid #000
+      z-index: 10
+
+#contact
+  th, td
+    padding: 0.5em
+    font-size: 120%
+
+  th
+    text-align: right
+
+#footer
+  border-top: border
+  padding: 0.5em
+  background-color: header_color
+  font-size: 80%
