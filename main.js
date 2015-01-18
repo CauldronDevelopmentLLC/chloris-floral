@@ -9,31 +9,55 @@ var sc_project = 10221566;
 var sc_security = "8c9897c5";
 var sc_location = 'chlorisfloral.com/';
 var sc_referer = "";
-try {sc_referer = "" + escape(parent.document.referrer);}
-catch (e) {sc_referer = "" + escape(document.referrer);}
+try {sc_referer = "" + escape(parent.document.referrer)}
+catch (e) {sc_referer = "" + escape(document.referrer)}
 
 
-function stat_count(location = '') {
+function stat_count(location) {
+  if (typeof location == 'undefined') location = '';
+
   config = {
-    sc_project: sc_project, security: sc_security,
-    resolution: screen.width, h: screen.height, camefrom: sc_referer,
-    java: 1, sc_snum: 1, p: 0, u: escape(sc_location + location),
-    t: escape(document.title), sc_random: Math.random()
+    sc_project: sc_project,
+    security: sc_security,
+    resolution: screen.width,
+    h: screen.height,
+    camefrom: sc_referer,
+    java: 1,
+    sc_snum: 1,
+    p: 0,
+    u: escape(sc_location + location),
+    t: escape(document.title),
+    sc_random: Math.random()
   };
 
-  $.ajax({url: 'http://c.statcounter.com/t.php', cache: false, data: config});
+  $.ajax({
+    url: 'http://c.statcounter.com/t.php',
+    dataType: 'jsonp',
+    cache: false,
+    data: config
+  });
 }
 
 
-function stat_count_link(location = '', link = null, mode = 1) {
+function stat_count_link(location, link, mode) {
+  if (typeof location == 'undefined') location = '';
+
   config = {
-    sc_project: sc_project, security: sc_security,
-    c: escape(link), m: mode, u: escape(sc_location + location),
-    t: escape(document.title), sc_random: Math.random()
+    sc_project: sc_project,
+    security: sc_security,
+    c: link ? escape(link) : undefined,
+    m: (typeof mode == 'undefined') ? 1 : mode,
+    u: escape(sc_location + location),
+    t: escape(document.title),
+    sc_random: Math.random()
   };
 
-  $.ajax({url: 'http://c.statcounter.com/click.gif',
-          cache: false, data: config});
+  $.ajax({
+    url: 'http://c.statcounter.com/click.gif',
+    dataType: 'jsonp',
+    cache: false,
+    data: config
+  });
 }
 
 
@@ -124,7 +148,6 @@ function load_gallery() {
     userID: '128971344@N05',
     photoset: '72157648023960373',
     photoSorting: 'reversed',
-    viewer: 'fancybox',
     thumbnailWidth: 160,
     thumbnailHeight: 'auto',
     thumbnailGutterWidth: 10,
