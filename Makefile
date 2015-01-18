@@ -6,7 +6,7 @@ current_dir := $(patsubst %/,%,$(dir $(mkfile_path)))
 
 all: $(TARGETS)
 
-%.html: %.jade
+%.html: %.jade *.jade
 	jade -P $<
 
 %.css: %.styl

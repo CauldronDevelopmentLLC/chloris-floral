@@ -9,9 +9,15 @@ html
     link(rel='stylesheet'
       href=cdn + '/font-awesome/4.2.0/css/font-awesome.min.css')
 
-    link(href='http://fonts.googleapis.com/css?family=Dancing+Script'
+    - var cdn = 'http://cdnjs.cloudflare.com/ajax/libs'
+    link(rel="stylesheet"
+      href=cdn + "/nanogallery/5.3.0/css/nanogallery.min.css")
+    link(rel="stylesheet"
+      href=cdn +
+        "/nanogallery/5.3.0/css/themes/light/nanogallery_light.min.css")
+    link(
+      href='http://fonts.googleapis.com/css?family=Josefin+Sans|Special Elite'
       rel='stylesheet' type='text/css')
-
     link(rel="stylesheet", href="style.css")
 
   body
@@ -32,7 +38,7 @@ html
               span.fa.fa-instagram
 
             a.email(target='_blank' title='Contact by email'
-              href='email:betany@chlorisfloral.com')
+              href='email:info@chlorisfloral.com')
               span.fa.fa-envelope
 
           a(href='#')
@@ -42,29 +48,24 @@ html
             ul
 
         #pages
-          #home
-            p Local, farm fresh & pesticide free.
+          #home-page
+            | Exclusively local & seasonal flowers.
 
-          #about(title='About')
-            h1 About Chloris Floral
+          #about-page(title='About')
+            include ./about.jade
 
-            p
-              | Chloris Floral (<em>Klor-REESE</em>) in Sonoma County.
-              | Blooms and foliage are always 100% local, fresh and sustainably
-              | grown from local flower farms and our garden.
-
-          #portfolio(title='Portfolio')
+          #portfolio-page(title='Portfolio')
             h1 Portfolio
 
-            #instafeed
+            #gallery
 
-          #csa(title='Flower CSA')
-            h1 About our CSA
+          #csa-page(title='Flower CSA')
+            include ./csa.jade
 
-          #events(title='Events')
-            h1 Events
+          #events-page(title='Events')
+            include ./events.jade
 
-          #contact(title='Contact')
+          #contact-page(title='Contact')
             h1 Contact Info
 
             table
@@ -74,8 +75,8 @@ html
               tr
                 th Email:
                 td
-                  a(href="mailto:betany@chlorisfloral.com")
-                    | betany@chlorisfloral.com
+                  a(href="mailto:info@chlorisfloral.com")
+                    | info@chlorisfloral.com
 
         #footer
           .copyright
@@ -83,5 +84,6 @@ html
 
       - var cdn = 'http://cdnjs.cloudflare.com/ajax/libs'
       script(src=cdn + "/jquery/2.1.3/jquery.min.js")
+      script(src=cdn + "/nanogallery/5.3.0/jquery.nanogallery.min.js")
       script(src="instafeed.min.js")
       script(src="main.js")

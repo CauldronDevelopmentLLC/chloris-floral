@@ -1,21 +1,32 @@
 page_width = 40em
-text_color = #925B53 //#b2a97c
-header_color = #f9eed8
-bg_color = #f9eed8
-page_bg = #F9F3E5 //#DDCDBD //#fdfdfe
-page_color = #864B43 //#925249
-border = 1px solid #e5dbc7
 anchor_offset = 320px
 
+green_hl = #b2a97c
+dark_green_hl = #8F8864
+pink_hl = #fbd7c8
+red_hl = #925c53
+
+link_color = red_hl
+text_color = red_hl
+header_bg = #f9eed8
+bg_color = #f9eed8
+page_bg = #f9f7f1
+page_color = #864b43
+
+border = 1px solid #e5dbc7
+
 body
-  background-color: #fbfbfc
-  overflow-y: scroll
+  overflow-y: scroll !important
+  font-family: 'Josefin Sans'
 
 a, a:visited
-  color: #925b53
+  color: link_color
+  font-weight bold
+  text-decoration: none
 
 a:hover
-  text-decoration: none
+  transition: 0.5s
+  text-decoration: underline
 
 img
   vertical-align: middle
@@ -26,7 +37,6 @@ img
   left: -50%
   width: 200%
   height: 200%
-  background: #000
 
   img
     position: absolute
@@ -49,8 +59,10 @@ img
   border-radius: 3px
 
 #header
-  background-color: header_color
+  background-color: header_bg
   padding-bottom: 5px
+  broder-top-left-radius: 3px
+  broder-top-right-radius: 3px
   border-bottom: border
 
   > a > img
@@ -71,19 +83,17 @@ img
       border-radius: 12px
       width: 32px
       height: 32px
+      line-height: 36px
       padding: 2px
 
-      &:hover.facebook
-        background-color: #49659f
-
-      &:hover.instagram
-        background-color: #4e7ca0
-
-      &:hover.email
-        background-color: #fbd7c8
+      &:hover
+        background-color: red_hl
 
 #menu
   font-size: 110%
+
+  a, a:visited
+    color: red_hl
 
   ul
     margin: 0
@@ -92,21 +102,26 @@ img
   li
     list-style: none
     display: inline-block
-    margin: 0 0.25em
+    margin: 0 0.75em
     text-transform: uppercase
-
-    &:before
-      content: ' | '
-
-    &:first-of-type:before
-      content: none
 
 #pages
   background-color: page_bg
 
   h1, h2, h3
     font-weight: normal
-    font-family: 'Dancing Script', cursive
+    font-family: 'Josefin Sans'
+
+  img
+    border-radius: 3px
+
+  img.left
+    float: left
+    margin-right: 1em
+
+  img.right
+    float: right
+    margin-left: 1em
 
   > div
     padding: 0.25em 1em 1em 1em
@@ -114,33 +129,43 @@ img
     text-align: left
     color: page_color
 
-  #home
-    font-size: 250%
-    font-family: 'Dancing Script', cursive
+  > #about-page img
+    width: 200px
+
+  > #home-page
+    font-size: 170%
+    font-family: 'Special Elite'
+    color: red_hl
     text-align: center
-    min-height: 0px
-    height: 1.3em !important
+    min-height: auto
+    height: auto !important
+    padding: 1.25em
+    background-color: header_bg
 
-    p
-      margin: 0.5em
+#gallery
+  img
+    border-radius: 0
 
-
-#instafeed
-  text-align: center
-
-  a
-    display: inline-block
-    border: 1px solid transparent
-    margin: 1px
-    margin-right: -1px
-    margin-bottom: -5px
-    border-radius: 5px
-    height: 150px !important
-    overflow: hidden
+  .nanoGalleryThumbnailContainer
+    background-color: transparent
+    border-width: 2px
+    border-color: transparent
 
     &:hover
-      border: 1px solid #000
-      z-index: 10
+      border-color: #444
+
+  .labelImage
+    padding: 0
+    margin: 0
+    margin-top: -1px
+
+  .labelImageTitle
+    display: none
+
+  .labelDescription
+    line-height: 1.5em
+    padding: 0 5px
+    margin: 0
 
 #contact
   th, td
@@ -153,5 +178,5 @@ img
 #footer
   border-top: border
   padding: 0.5em
-  background-color: header_color
+  background-color: header_bg
   font-size: 80%
