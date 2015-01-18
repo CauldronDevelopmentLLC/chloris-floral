@@ -22,8 +22,7 @@ html
 
   body
       #background
-        img(src='http://photos-a.ak.instagram.com/hphotos-ak-xfa1' +
-          '/t51.2885-15/10838919_1547601922150798_611139977_n.jpg')
+        img(src='images/background.png')
 
       #content
         #header
@@ -56,7 +55,6 @@ html
 
           #portfolio-page(title='Portfolio')
             h1 Portfolio
-
             #gallery
 
           #csa-page(title='Flower CSA')
@@ -66,17 +64,7 @@ html
             include ./events.jade
 
           #contact-page(title='Contact')
-            h1 Contact Info
-
-            table
-              tr
-                th Phone:
-                td (208) 409-6992
-              tr
-                th Email:
-                td
-                  a(href="mailto:info@chlorisfloral.com")
-                    | info@chlorisfloral.com
+            include ./contact.jade
 
         #footer
           .copyright

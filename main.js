@@ -66,6 +66,12 @@ var current_page;
 var updating_page = false;
 
 
+function page_callback(name) {
+  var fn = current_page + '_' + name;
+  if (typeof window[fn] == 'function') window[fn]();
+}
+
+
 function update_page() {
   var active_page = location.hash.substring(1);
   if (active_page == current_page) return;
@@ -83,15 +89,18 @@ function update_page() {
     $('#' + current_page + '-page').fadeOut('fast', function() {
       $('#' + active_page + '-page').fadeIn('fast', function () {
         updating_page = false;
+        page_callback('post_update');
       })
     })
 
   else $('#' + active_page + '-page').fadeIn('fast', function () {
     updating_page = false;
+    page_callback('post_update');
   })
 
   current_page = active_page;
-  if (current_page == 'portfolio') load_gallery();
+
+  page_callback('update');
 
   stat_count('#' + current_page);
 }
@@ -103,20 +112,16 @@ function init_page() {
     pages.push($(this).attr('id').replace(/-page$/, ''));
   });
 
-
   // Select initial page
-  current_page = location.hash.substring(1);
-  if (!current_page) current_page = pages[0];
-  location.hash = '#' + current_page;
-
-  if (current_page == 'portfolio') load_gallery();
+  update_page();
 
   // Hide all but current page
   for (i in pages)
     if (pages[i] != current_page)
       $('#' + pages[i] + '-page').hide();
 
-  setInterval(update_page, 100);
+  // Start timer
+  setInterval(update_page, 250);
 }
 
 
@@ -137,6 +142,16 @@ function create_menu() {
 
 
 var gallery_loaded = false;
+
+
+function portfolio_update() {
+  load_gallery();
+}
+
+
+function portfolio_post_update() {
+  $('#gallery').resize();
+}
 
 
 function load_gallery() {
@@ -161,6 +176,10 @@ function load_gallery() {
       position: 'onBottom',
       align: 'center'
     },
+    viewerToolbar: {
+      autoMinimize: 10000,
+      minimized: 'label,closeButton'
+    },
     theme: 'light'
   });
 }
@@ -170,6 +189,13 @@ $(function () {
   create_menu();
   init_page();
   stat_count();
+
+  // Open external links in a new page
+  $('a').each(function () {
+    var href = $(this).attr('href');
+    if (/^https?:\/\//.test(href))
+      $(this).attr('target', '_blank');
+  })
 
   // Track clicks
   for (i in pages) {
