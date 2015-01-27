@@ -93,7 +93,7 @@ img
         background-color: red_hl
 
 #menu
-  font-size: 110%
+  font-size: 100%
 
   a, a:visited
     color: red_hl
@@ -118,13 +118,21 @@ img
   img
     border-radius: 3px
 
-  img.left
+  .left
     float: left
     margin-right: 1em
 
-  img.right
+  .right
     float: right
     margin-left: 1em
+
+  .center
+    text-align center
+
+  .caption
+    font-size 10pt
+    padding 4px 0 6px 0
+    text-align center
 
   > div
     padding: 0.25em 1em 1em 1em
@@ -133,17 +141,34 @@ img
     color: page_fg
 
   > #about-page img
-    width: 200px
+    height: 200px
 
   > #home-page
     font-size: 170%
     font-family: 'Special Elite'
     color: red_hl
     text-align: center
-    min-height: initial
-    height: auto !important
-    padding: 1.25em
     background-color: header_bg
+    padding 0
+
+    img
+      width 100%
+      border-radius 0
+
+    div
+      text-align center
+      padding 0.75em 0
+
+    .caption
+      font-family 'Josefin Sans'
+
+
+  #csa-page, #events-page, #contact-page
+    .right, .left
+      padding-top 20px
+
+  #events-page
+    min-height 340px
 
 #gallery
   user-select: none
