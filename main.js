@@ -131,10 +131,13 @@ function create_menu() {
   $('#pages > div[title]').each(function () {
     var id = $(this).attr('id').replace(/-page$/, '');
     var title = $(this).attr('title');
+    var href = $(this).attr('href');
+
+    if (typeof href == 'undefined') href = '#' + id;
 
     $('<li>')
       .append($('<a>')
-              .attr('href', '#' + id)
+              .attr('href', href)
               .text(title))
       .appendTo(menu);
   });
